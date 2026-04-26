@@ -20,7 +20,6 @@
     { href: 'faq.html', label: 'FAQ' },
   ];
 
-  // Find prefix — pages in /pages/ subfolder need ../ prefix
   const inPages = path.includes('/pages/') || path.includes('\\pages\\');
   const inBlog = path.includes('/blog/') || path.includes('\\blog\\');
   const prefix = inPages || inBlog ? '../' : './';
@@ -96,6 +95,7 @@
               <li><a href="${prefix}pages/research.html">Research</a></li>
               <li><a href="${prefix}pages/blog.html">Articles</a></li>
               <li><a href="${prefix}pages/faq.html">FAQ</a></li>
+              <li><a href="${prefix}admin/">Admin</a></li>
             </ul>
           </div>
           <div class="footer-col">
@@ -116,7 +116,6 @@
     </footer>
   `;
 
-  // Inject
   const headerSlot = document.getElementById('site-header');
   const footerSlot = document.getElementById('site-footer');
   if (headerSlot) headerSlot.outerHTML = headerHtml;
