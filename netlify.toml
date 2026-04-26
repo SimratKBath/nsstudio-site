@@ -1,0 +1,24 @@
+# Netlify build & deploy config for NS Studio
+[build]
+  publish   = "."
+  command   = "npm install && npm run build"
+
+# Pretty URLs: /blog/fatal-flaws → /blog/fatal-flaws.html
+[[redirects]]
+  from = "/blog/:slug"
+  to   = "/blog/:slug.html"
+  status = 200
+
+# /admin always serves the Decap CMS shell
+[[redirects]]
+  from = "/admin"
+  to   = "/admin/index.html"
+  status = 200
+
+# Force HTTPS (Netlify does this by default, but explicit is good)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

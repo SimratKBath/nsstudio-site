@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Minimum Viable AI Governance Kit — NS Studio</title>
+    <meta name="description" content="The smallest set of policies, evals, and review cadences that prevent AI from quietly becoming a compliance fire. Built for ops leaders, not legal teams." />
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+
+    <main id="main">
+      <section class="page-hero">
+        <div class="container container--default">
+          <div class="blog-card-meta" style="margin-bottom: var(--space-4)">
+            <span class="category">Governance</span>
+            <span>11-min read</span>
+            <span>Published Q2 2026</span>
+          </div>
+          <h1 style="font-size: var(--text-2xl)">The minimum viable AI governance kit.</h1>
+          <p>The smallest set of policies, evals, and cadences that keep AI from quietly becoming a compliance fire — designed for ops leaders, not legal teams.</p>
+        </div>
+      </section>
+
+      <section class="tight">
+        <div class="container">
+          <article class="article">
+            <p>
+              Most AI governance documents are written by lawyers and read by
+              nobody. They are long, careful, and operationally useless. They
+              describe principles ("the company uses AI responsibly") instead
+              of decisions ("model X is approved for use case Y, reviewed
+              quarterly").
+            </p>
+            <p>
+              The version below is the opposite. It's an operational kit you
+              can stand up in two afternoons. It won't make your legal team
+              happy on its own — for that, you'll layer the formal policy on
+              top — but it's what actually prevents AI from quietly becoming
+              a problem in your company.
+            </p>
+
+            <h2>Component 1: The decision rights map.</h2>
+            <p>One page. Three columns. For each AI use case, name:</p>
+            <ul>
+              <li><strong>The owner</strong> (who decides whether to deploy)</li>
+              <li><strong>The reviewer</strong> (who has to sign off before deployment)</li>
+              <li><strong>The escalation path</strong> (what triggers re-review)</li>
+            </ul>
+            <p>
+              Example: "Customer support chatbot. Owner: VP Support. Reviewer:
+              VP Eng + Legal. Escalation: any change to model, training data,
+              or accuracy threshold under 95%."
+            </p>
+            <p>
+              That's it. One row per use case. Most companies have three to
+              five rows. The map fits on a single page and lives in a known
+              location. When something happens, the first thing anyone does
+              is check the map. The map answers the question.
+            </p>
+
+            <h2>Component 2: The model approval list.</h2>
+            <p>
+              Which AI models are approved for which use cases? Companies that
+              skip this end up with engineers using arbitrary models, vendors
+              changing terms unnoticed, and data flowing through services
+              nobody audited.
+            </p>
+            <p>
+              The list has four columns: Model, Vendor, Approved use cases,
+              Last reviewed. Reviewed quarterly. Out-of-list use requires
+              approval per the decision rights map.
+            </p>
+            <blockquote>
+              The first time a vendor changes their privacy policy and you
+              didn't notice is the last time you'll skip this list.
+            </blockquote>
+
+            <h2>Component 3: The eval framework.</h2>
+            <p>
+              For every AI use case in production, you need a specific,
+              behavioral metric for whether it's working. Not "is the AI
+              good." Specific.
+            </p>
+            <p>Examples:</p>
+            <ul>
+              <li>Customer support: % of conversations escalated. Threshold: under 12%.</li>
+              <li>Sales qualification: false-negative rate (qualified leads marked unqualified). Threshold: under 5%.</li>
+              <li>Internal research summarization: human-rated factual accuracy on a sampled set of 50 queries per quarter. Threshold: 90%.</li>
+            </ul>
+            <p>
+              The threshold is what triggers escalation. The sample-set is
+              what makes it measurable. Without both, you don't have an eval —
+              you have a feeling.
+            </p>
+
+            <h2>Component 4: The monthly review cadence.</h2>
+            <p>
+              Forty minutes, last Friday of the month. Three agenda items:
+            </p>
+            <ol>
+              <li>Walk the decision rights map. Anything change? Anything new added? (10 min)</li>
+              <li>Walk the model approval list. Any vendor changes? Any new models requested? (10 min)</li>
+              <li>Walk the eval results. Any threshold breached? Any pattern emerging? (20 min)</li>
+            </ol>
+            <p>
+              Three people in the room: the AI owner (often a VP of Eng or
+              Ops), one engineering rep, and one business rep. Notes filed in
+              a known place. Done.
+            </p>
+            <p>
+              That's the entire monthly cadence. About forty minutes per
+              month. The companies we work with that skip this end up with
+              quarterly fire drills. The companies that do this never have
+              fire drills.
+            </p>
+
+            <h2>Component 5: The escalation runbook.</h2>
+            <p>
+              When something goes wrong, what happens in the first hour?
+              Write that down once. Format:
+            </p>
+            <ul>
+              <li><strong>Trigger:</strong> Eval threshold breach / customer complaint / regulator inquiry / vendor incident</li>
+              <li><strong>First call:</strong> AI owner</li>
+              <li><strong>Second call:</strong> Reviewer pair (per the decision rights map)</li>
+              <li><strong>Holding action:</strong> What gets paused or rolled back while we investigate</li>
+              <li><strong>Communication template:</strong> Pre-drafted note for affected users / customers</li>
+            </ul>
+            <p>
+              The first hour after a problem is where most damage is done.
+              Pre-writing this runbook means the first hour is calm and
+              procedural instead of panicked and improvised.
+            </p>
+
+            <h2>What this kit replaces — and what it doesn't.</h2>
+            <p>
+              <strong>It replaces:</strong> the bloated 30-page AI policy that
+              nobody reads. The vague principles. The "we have governance"
+              fig leaf.
+            </p>
+            <p>
+              <strong>It doesn't replace:</strong> formal compliance work for
+              regulated industries (HIPAA, FERPA, GDPR specifics, SOC 2
+              attestations). For those, layer the formal policy on top of this
+              operational kit. The kit ensures the formal policy is actually
+              followed in practice.
+            </p>
+
+            <h2>How to stand it up in two afternoons.</h2>
+            <p>
+              <strong>Afternoon 1.</strong> Write the decision rights map and
+              the model approval list. Get one engineering lead and one
+              business lead in the room. List every AI use case you know
+              about. For each: pick owner, reviewer, escalation. List every
+              model in use: which use case, last reviewed.
+            </p>
+            <p>
+              <strong>Afternoon 2.</strong> Write the eval framework, monthly
+              cadence, and escalation runbook. The hardest part is forcing
+              specificity on the evals. Don't accept "the AI works well." Get
+              to numbers.
+            </p>
+            <p>
+              By the end of week one, the entire kit lives in a shared
+              document. It's reviewed monthly. It evolves. It saves the
+              company from fires that haven't happened yet — and that's the
+              point.
+            </p>
+
+            <div style="margin-top: var(--space-16); padding: var(--space-8); background: var(--color-surface-offset); border-radius: var(--radius-lg); border-left: 3px solid var(--color-primary)">
+              <p style="margin: 0; font-family: var(--font-display); font-size: var(--text-lg); font-style: italic">
+                The Embedded Advisor engagement is built around exactly this
+                kit, customized to your stack and risk profile.
+                <a href="../pages/contact.html#book" style="color: var(--color-primary)">Book a call</a>
+                to discuss, or
+                <a href="../pages/pricing.html#governance" style="color: var(--color-primary)">see pricing</a>.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <script src="../partials.js"></script>
+    <script src="../app.js"></script>
+  </body>
+</html>

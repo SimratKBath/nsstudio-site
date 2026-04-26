@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>/index.html</loc><priority>1.0</priority></url>
+  <url><loc>/pages/services.html</loc><priority>0.9</priority></url>
+  <url><loc>/pages/pricing.html</loc><priority>0.9</priority></url>
+  <url><loc>/pages/portfolio.html</loc><priority>0.8</priority></url>
+  <url><loc>/pages/research.html</loc><priority>0.8</priority></url>
+  <url><loc>/pages/about.html</loc><priority>0.7</priority></url>
+  <url><loc>/pages/blog.html</loc><priority>0.7</priority></url>
+  <url><loc>/pages/faq.html</loc><priority>0.6</priority></url>
+  <url><loc>/pages/contact.html</loc><priority>0.9</priority></url>
+  <url><loc>/blog/fatal-flaws.html</loc><priority>0.7</priority></url>
+  <url><loc>/blog/painkiller-vitamin.html</loc><priority>0.6</priority></url>
+  <url><loc>/blog/competitor-you-cant-see.html</loc><priority>0.6</priority></url>
+  <url><loc>/blog/governance-checklist.html</loc><priority>0.6</priority></url>
+</urlset>

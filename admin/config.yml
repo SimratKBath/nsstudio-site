@@ -1,0 +1,83 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Where uploaded images go (cover + inline)
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+# Local preview during development
+local_backend: false
+
+site_url: https://nsstudiollc.com
+display_url: https://nsstudiollc.com
+logo_url: https://nsstudiollc.com/favicon.svg
+
+collections:
+  - name: "articles"
+    label: "Articles"
+    label_singular: "Article"
+    folder: "content/articles"
+    create: true
+    slug: "{{slug}}"
+    preview_path: "blog/{{slug}}"
+    summary: "{{title}} — {{date | date('YYYY-MM-DD')}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Subtitle / Dek", name: "subtitle", widget: "string", required: false }
+      - {
+          label: "Category",
+          name: "category",
+          widget: "select",
+          options:
+            ["Frameworks", "Field Notes", "Opinion", "Research", "Case Study"],
+          default: "Frameworks",
+        }
+      - {
+          label: "Read time",
+          name: "read_time",
+          widget: "string",
+          hint: "e.g. 8-min read",
+          required: false,
+        }
+      - { label: "Publish date", name: "date", widget: "datetime" }
+      - {
+          label: "Featured",
+          name: "featured",
+          widget: "boolean",
+          default: false,
+          hint: "Show as the hero card on the Articles page",
+        }
+      - {
+          label: "Cover image",
+          name: "cover_image",
+          widget: "image",
+          required: false,
+          hint: "1600×1000 ideal. Used at top of article and on the listing card.",
+        }
+      - {
+          label: "Cover alt text",
+          name: "cover_alt",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "Excerpt",
+          name: "excerpt",
+          widget: "text",
+          hint: "1–2 sentences. Shown on the listing card and as meta description.",
+        }
+      - {
+          label: "Body",
+          name: "body",
+          widget: "markdown",
+          hint: "Write in Markdown, Rich Text, or paste from Google Docs / ChatGPT — all three work. Drop in inline images anywhere.",
+        }
+      - {
+          label: "SEO — Meta description",
+          name: "meta_description",
+          widget: "text",
+          required: false,
+          hint: "Optional override. If blank, Excerpt is used.",
+        }

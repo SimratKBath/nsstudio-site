@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painkiller or Vitamin? The Single Test for AI Features — NS Studio</title>
+    <meta name="description" content="The single test that predicts whether an AI feature will get used after the demo. Adapted from Paul Graham's customer discovery framework." />
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+
+    <main id="main">
+      <section class="page-hero">
+        <div class="container container--default">
+          <div class="blog-card-meta" style="margin-bottom: var(--space-4)">
+            <span class="category">Diagnostic</span>
+            <span>9-min read</span>
+            <span>Published Q2 2026</span>
+          </div>
+          <h1 style="font-size: var(--text-2xl)">Is your AI product a painkiller or a vitamin?</h1>
+          <p>The one test that separates AI features people actually use from features that demo well and quietly die.</p>
+        </div>
+      </section>
+
+      <section class="tight">
+        <div class="container">
+          <article class="article">
+            <p>
+              Paul Graham has a framework for customer discovery: you're either
+              building a painkiller or a vitamin. Painkillers solve problems
+              people feel daily and pay to make stop. Vitamins are nice-to-haves
+              people approve of in surveys and never use in practice.
+            </p>
+            <p>
+              Most AI features are vitamins dressed as painkillers. They demo
+              beautifully — the AI summarizes, generates, suggests — and then
+              users glance at the output, nod, and go back to what they were
+              doing. The feature isn't bad. It's just not load-bearing.
+            </p>
+
+            <h2>The test.</h2>
+            <p>
+              Ask three real users this question: "If this AI feature
+              disappeared tomorrow, what specifically would you do
+              differently?"
+            </p>
+            <p>If the answer is one of these, it's a vitamin:</p>
+            <ul>
+              <li>"I'd miss it, but I'd be fine."</li>
+              <li>"I'd use ChatGPT instead."</li>
+              <li>"Nothing really, I forgot about it."</li>
+              <li>"I don't use it that much anyway."</li>
+            </ul>
+            <p>If the answer sounds like one of these, it's a painkiller:</p>
+            <ul>
+              <li>"I'd lose two hours of my day."</li>
+              <li>"I'd have to hire someone."</li>
+              <li>"I'd miss errors I now catch automatically."</li>
+              <li>"I literally can't go back."</li>
+            </ul>
+            <p>
+              Three users is enough. The pattern is unmistakable in either
+              direction. We've never run this test and gotten ambiguous
+              results.
+            </p>
+
+            <h2>Why this matters more for AI than other features.</h2>
+            <p>
+              AI features have a unique pathology: they impress in demos and
+              underperform in production. The reason is that demos are
+              optimized for novelty (look what it can do!) and production is
+              optimized for habit (does this fit my actual workflow?). Most AI
+              features cross the demo line and never cross the habit line.
+            </p>
+            <blockquote>
+              Demos sell capability. Production buys habit. Most AI features
+              sell what they can't deliver.
+            </blockquote>
+
+            <h2>The pre-build version of the test.</h2>
+            <p>
+              Before building, you can run a sharper version of the test by
+              asking your prospective users this: "Walk me through the last
+              time you experienced [the problem the AI feature solves]. Tell
+              me what you actually did."
+            </p>
+            <p>If they can recall a specific instance from the last week — that's a painkiller candidate. If they have to think hard, or describe the problem in the abstract, or admit the problem doesn't actually come up that much — vitamin.</p>
+            <p>
+              The error founders make: they ask "would you use this?" and
+              users politely say yes. Always. The painkiller test asks about
+              behavior in the past tense, not preferences in the future tense.
+              The two answers diverge wildly.
+            </p>
+
+            <h2>What to do when you discover you've built a vitamin.</h2>
+            <p>
+              You have three options, in order of preference:
+            </p>
+            <ol>
+              <li>
+                <strong>Find the painkiller adjacent to the vitamin.</strong>
+                Often the AI capability is right but the problem framing is
+                wrong. Talk to users about their actual painful moments. Is
+                there one your existing tech could address with a different
+                interface?
+              </li>
+              <li>
+                <strong>Kill it cleanly.</strong> Most companies can't bring
+                themselves to do this. They keep the feature on life support
+                because it cost money to build. Sunk cost is a tax. Pay it
+                once and move on.
+              </li>
+              <li>
+                <strong>Reframe as ambient infrastructure.</strong> Sometimes
+                a vitamin works as plumbing — invisible, always-on, providing
+                small lifts everywhere. This is rare and usually a
+                rationalization. Use sparingly.
+              </li>
+            </ol>
+            <p>
+              Whichever option you choose, name it explicitly. Vitamins that
+              live as not-quite-killed half-features are the silent budget
+              killer in most AI portfolios.
+            </p>
+
+            <h2>The corollary: not every business needs a painkiller AI feature.</h2>
+            <p>
+              Some businesses don't have a painkiller-shaped AI opportunity.
+              Their workflows are already efficient. Their users aren't in
+              acute pain. The honest answer is: no AI feature, yet. Wait until
+              the technology produces a 10x lift in something you actually
+              care about, then revisit.
+            </p>
+            <p>
+              We've told paying clients this. They occasionally object — they
+              hired us to find an AI strategy, not to be told there isn't a
+              good one. But the alternative is helping them build a vitamin
+              they'll regret. The fee is small compared to the year of
+              opportunity cost.
+            </p>
+
+            <div style="margin-top: var(--space-16); padding: var(--space-8); background: var(--color-surface-offset); border-radius: var(--radius-lg); border-left: 3px solid var(--color-primary)">
+              <p style="margin: 0; font-family: var(--font-display); font-size: var(--text-lg); font-style: italic">
+                Want to run the painkiller test on your AI roadmap with a
+                senior advisor in the room?
+                <a href="../pages/contact.html#book" style="color: var(--color-primary)">Book a 30-minute call</a>.
+                Or
+                <a href="../pages/contact.html#fatal-flaws" style="color: var(--color-primary)">grab the free guide</a>
+                first.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <script src="../partials.js"></script>
+    <script src="../app.js"></script>
+  </body>
+</html>

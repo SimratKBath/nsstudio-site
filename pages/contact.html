@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact — Book, Discover, Download · NS Studio</title>
+    <meta
+      name="description"
+      content="Three ways to start with NS Studio: book a 30-minute strategy call, submit a discovery form, or download the free 5 Fatal Flaws guide."
+    />
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+
+    <main id="main">
+      <section class="page-hero">
+        <div class="container">
+          <span class="eyebrow">Contact</span>
+          <h1>Three ways in. Pick the level of commitment that fits where you are.</h1>
+          <p>
+            All three reach the same person. We respond within one business
+            day, every time.
+          </p>
+        </div>
+      </section>
+
+      <!-- BOOK A CALL -->
+      <section id="book" class="tight">
+        <div class="container">
+          <div style="display: grid; gap: var(--space-12); grid-template-columns: minmax(0, 1fr); align-items: start" class="contact-grid">
+            <div>
+              <span class="eyebrow">Option 1 · Fastest</span>
+              <h2 style="font-family: var(--font-display); font-weight: 400; font-size: var(--text-2xl); letter-spacing: -0.02em; margin-block: var(--space-3) var(--space-4)">Book a 30-minute strategy call.</h2>
+              <p class="text-muted" style="margin-bottom: var(--space-6)">
+                The fastest path. Zero prep needed. We'll know in the first 10
+                minutes if we can help — and tell you honestly if we can't.
+              </p>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--space-3); margin-bottom: var(--space-8); font-size: var(--text-sm)">
+                <li style="display: flex; gap: var(--space-3)"><span style="color: var(--color-primary)">→</span> No sales script, no follow-up sequence</li>
+                <li style="display: flex; gap: var(--space-3)"><span style="color: var(--color-primary)">→</span> 30-min Zoom or Google Meet</li>
+                <li style="display: flex; gap: var(--space-3)"><span style="color: var(--color-primary)">→</span> Founder-led — you're talking to the person who'd run your engagement</li>
+              </ul>
+            </div>
+
+            <div class="form-card">
+              <div style="text-align: center; padding: var(--space-8) var(--space-4)">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-primary); margin-inline: auto; margin-bottom: var(--space-4)" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <h3 style="font-family: var(--font-display); font-size: var(--text-lg); font-weight: 400; margin-bottom: var(--space-3)">Choose a time</h3>
+                <p class="text-muted" style="font-size: var(--text-sm); margin-bottom: var(--space-6); margin-inline: auto">
+                  Click below to open the calendar. Standard Pacific Time
+                  availability — let us know if you need a different timezone.
+                </p>
+                <a href="https://calendly.com/your-link-here" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">Open the calendar</a>
+                <p class="form-help" style="margin-top: var(--space-4)">
+                  Calendly link goes here — replace <code>https://calendly.com/your-link-here</code> in <code>contact.html</code>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="container"><div class="deco-line"></div></div>
+
+      <!-- DISCOVERY FORM -->
+      <section id="discovery" class="tight">
+        <div class="container">
+          <div style="display: grid; gap: var(--space-12); grid-template-columns: minmax(0, 1fr); align-items: start" class="contact-grid">
+            <div>
+              <span class="eyebrow">Option 2 · In writing</span>
+              <h2 style="font-family: var(--font-display); font-weight: 400; font-size: var(--text-2xl); letter-spacing: -0.02em; margin-block: var(--space-3) var(--space-4)">Submit a discovery form.</h2>
+              <p class="text-muted" style="margin-bottom: var(--space-6)">
+                If you'd rather write than talk first. Tell us about your
+                business and what you're trying to figure out. We respond
+                within one business day with either questions, a recommended
+                engagement, or an honest "this isn't a fit."
+              </p>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--space-3); margin-bottom: var(--space-8); font-size: var(--text-sm)">
+                <li style="display: flex; gap: var(--space-3)"><span style="color: var(--color-primary)">→</span> Five questions, ~5 minutes</li>
+                <li style="display: flex; gap: var(--space-3)"><span style="color: var(--color-primary)">→</span> Goes directly to the founder, not a queue</li>
+                <li style="display: flex; gap: var(--space-3)"><span style="color: var(--color-primary)">→</span> Confidential — we sign your NDA on request</li>
+              </ul>
+            </div>
+
+            <div class="form-card">
+              <form data-form="discovery">
+                <div class="form-group">
+                  <label class="form-label" for="d-name">Your name</label>
+                  <input class="form-input" type="text" id="d-name" name="name" required autocomplete="name" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="d-email">Work email</label>
+                  <input class="form-input" type="email" id="d-email" name="email" required autocomplete="email" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="d-company">Company &amp; role</label>
+                  <input class="form-input" type="text" id="d-company" name="company" required placeholder="e.g. CTO, 200-person SaaS" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="d-engagement">Which engagement sounds closest?</label>
+                  <select class="form-select" id="d-engagement" name="engagement" required>
+                    <option value="">Pick the closest fit…</option>
+                    <option>AI Audit (2-week diagnostic)</option>
+                    <option>Strategy Sprint (4–6 weeks, end-to-end)</option>
+                    <option>Embedded Advisor (monthly retainer)</option>
+                    <option>Not sure yet — recommend one</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="d-message">What's the actual question you're trying to answer?</label>
+                  <textarea class="form-textarea" id="d-message" name="message" required placeholder="The more specific, the better. Example: 'We've spent $200K on three AI pilots and don't know which one to scale.'"></textarea>
+                  <div class="form-help">No formatting needed. Plain language is best.</div>
+                </div>
+                <button class="btn btn-primary btn-lg" type="submit" style="width: 100%">Submit discovery form</button>
+                <p class="form-help" style="margin-top: var(--space-4); text-align: center" data-form-status></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="container"><div class="deco-line"></div></div>
+
+      <!-- LEAD MAGNET -->
+      <section id="fatal-flaws" class="tight">
+        <div class="container">
+          <div style="display: grid; gap: var(--space-12); grid-template-columns: minmax(0, 1fr); align-items: center" class="contact-grid">
+            <div>
+              <span class="eyebrow">Option 3 · Read first</span>
+              <h2 style="font-family: var(--font-display); font-weight: 400; font-size: var(--text-2xl); letter-spacing: -0.02em; margin-block: var(--space-3) var(--space-4)">Free guide: 5 Fatal Flaws in Your AI Strategy.</h2>
+              <p class="text-muted" style="margin-bottom: var(--space-6)">
+                A 12-minute PDF in the NS Studio voice. The same diagnostic
+                framework we run in paid engagements — distilled into the five
+                patterns we see kill AI initiatives most often. Read it,
+                decide if our thinking matches yours.
+              </p>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--space-3); font-size: var(--text-sm)">
+                <li style="display: flex; gap: var(--space-3)"><span style="color: var(--color-primary)">→</span> 12 minutes, no fluff</li>
+                <li style="display: flex; gap: var(--space-3)"><span style="color: var(--color-primary)">→</span> The same frameworks paid clients see</li>
+                <li style="display: flex; gap: var(--space-3)"><span style="color: var(--color-primary)">→</span> Updated quarterly</li>
+                <li style="display: flex; gap: var(--space-3)"><span style="color: var(--color-primary)">→</span> No drip sequence — one email, one PDF, done</li>
+              </ul>
+            </div>
+
+            <div class="form-card">
+              <form data-form="lead-magnet">
+                <div style="text-align: center; margin-bottom: var(--space-6)">
+                  <svg width="120" height="150" viewBox="0 0 220 280" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect x="20" y="20" width="180" height="240" rx="6" fill="var(--color-surface-2)" stroke="var(--color-primary)" stroke-width="2"/>
+                    <rect x="20" y="20" width="180" height="40" rx="6" fill="var(--color-primary)"/>
+                    <text x="110" y="46" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="2" fill="#FFFCF4">NS STUDIO · GUIDE</text>
+                    <text x="110" y="120" text-anchor="middle" font-family="Instrument Serif, serif" font-style="italic" font-size="22" fill="var(--color-text)">5 Fatal Flaws</text>
+                    <text x="110" y="148" text-anchor="middle" font-family="Instrument Serif, serif" font-size="14" fill="var(--color-text)">in your AI strategy</text>
+                    <line x1="40" y1="180" x2="180" y2="180" stroke="var(--color-text)" stroke-width="0.5" opacity="0.3"/>
+                    <line x1="40" y1="200" x2="160" y2="200" stroke="var(--color-text)" stroke-width="0.5" opacity="0.3"/>
+                    <line x1="40" y1="220" x2="170" y2="220" stroke="var(--color-text)" stroke-width="0.5" opacity="0.3"/>
+                  </svg>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="l-name">First name</label>
+                  <input class="form-input" type="text" id="l-name" name="name" required autocomplete="given-name" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="l-email">Email</label>
+                  <input class="form-input" type="email" id="l-email" name="email" required autocomplete="email" />
+                  <div class="form-help">No drip emails — one delivery email, that's it.</div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="l-context">What kind of AI work are you doing? (optional)</label>
+                  <select class="form-select" id="l-context" name="context">
+                    <option value="">Skip if you'd rather not say…</option>
+                    <option>EdTech / education</option>
+                    <option>Mid-market B2B operations</option>
+                    <option>Early-stage startup founder</option>
+                    <option>Public sector / regulated industry</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <button class="btn btn-primary btn-lg" type="submit" style="width: 100%">Send me the PDF</button>
+                <p class="form-help" style="margin-top: var(--space-4); text-align: center" data-form-status></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DIRECT EMAIL -->
+      <section style="background: var(--color-surface)">
+        <div class="container container--default text-center">
+          <div class="section-header center">
+            <span class="eyebrow">Or just write</span>
+            <h2>Direct email always works.</h2>
+            <p style="margin-inline: auto">
+              If you'd prefer to skip the forms entirely and just describe
+              what you're working on in your own words.
+            </p>
+          </div>
+          <a href="mailto:simratbath@gmail.com?subject=NS%20Studio%20—%20inquiry" class="btn btn-secondary btn-lg">simratbath@gmail.com</a>
+        </div>
+      </section>
+
+      <div class="container"><div class="deco-line"></div></div>
+
+      <!-- RESEARCH PARTNER -->
+      <section id="research" class="tight">
+        <div class="container">
+          <div style="max-width: 720px;">
+            <span class="eyebrow" style="color: var(--color-primary)">The Calibration Program</span>
+            <h2 style="font-family: var(--font-display); font-weight: 400; font-size: var(--text-2xl); letter-spacing: -0.02em; margin-block: var(--space-3) var(--space-4)">Apply as a research partner.</h2>
+            <p class="text-muted" style="margin-bottom: var(--space-5); line-height: 1.65">
+              Two pre-registered studies on what AI is doing to executive
+              prioritization at F500 scale. We're recruiting 8–12 partner
+              companies for the Fall 2026 cohort. Partners receive: early
+              access to findings, a private benchmark report against the
+              cohort, and one full facilitated readout for their leadership
+              team.
+            </p>
+            <p class="text-muted" style="margin-bottom: var(--space-6); line-height: 1.65">
+              Read <a href="./research.html" style="color: var(--color-primary)">the full program brief</a> first. Then write to
+              us with your company, your role, and one sentence on why this
+              question matters to you.
+            </p>
+            <a href="mailto:simratbath@gmail.com?subject=The%20Calibration%20Program%20%E2%80%94%20Partner%20interest&body=Company%3A%20%0ARole%3A%20%0AWhy%20this%20research%20matters%20to%20us%3A%20" class="btn btn-primary btn-lg">Apply by email</a>
+            <a href="./research.html" class="btn btn-secondary btn-lg" style="margin-left: var(--space-3)">Read program brief</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <style>
+      @media (min-width: 880px) {
+        .contact-grid {
+          grid-template-columns: 1fr 1.1fr !important;
+          gap: var(--space-16) !important;
+        }
+      }
+    </style>
+
+    <div id="site-footer"></div>
+
+    <script src="../partials.js"></script>
+    <script src="../app.js"></script>
+  </body>
+</html>

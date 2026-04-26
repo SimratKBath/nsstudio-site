@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Case Studies — NS Studio</title>
+    <meta
+      name="description"
+      content="Selected case studies from NS Studio. The Dreamers Education: pilot results, AI methods, kill criteria, and what we learned shipping a real product."
+    />
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+
+    <main id="main">
+      <section class="page-hero">
+        <div class="container">
+          <span class="eyebrow">Case studies</span>
+          <h1>Selected work. Honest scope. Real numbers.</h1>
+          <p>
+            NS Studio is a young studio. We publish only the work we can write
+            about with full context — what we did, what we measured, what we
+            killed, and what we'd do differently. New case studies added each
+            quarter.
+          </p>
+        </div>
+      </section>
+
+      <!-- DREAMERS — featured -->
+      <section id="dreamers" class="tight">
+        <div class="container">
+          <div class="case-hero">
+            <div>
+              <div class="case-meta">Featured · EdTech · End-to-end</div>
+              <h1>The Dreamers Education.</h1>
+              <p class="lede">
+                A pre-launch education company came to NS Studio with a mission
+                and a domain name. They left with a brand system, a shipped
+                product, and an AI-driven learning workflow validated against
+                a real pilot cohort of 82 families.
+              </p>
+
+              <div class="metrics-grid">
+                <div class="metric">
+                  <span class="metric-value">82</span>
+                  <span class="metric-label">Beta families onboarded</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-value">68%</span>
+                  <span class="metric-label">Weekly session completion</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-value">3</span>
+                  <span class="metric-label">Features killed with data</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="case-image-card">
+              <svg viewBox="0 0 320 320" width="100%" style="max-width: 320px" xmlns="http://www.w3.org/2000/svg" aria-label="The Dreamers Education brand mark">
+                <defs>
+                  <linearGradient id="dreamGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="var(--color-primary)" />
+                    <stop offset="100%" stop-color="var(--color-accent-2)" />
+                  </linearGradient>
+                </defs>
+                <circle cx="160" cy="160" r="120" fill="none" stroke="url(#dreamGrad2)" stroke-width="2" opacity="0.3" />
+                <circle cx="160" cy="160" r="90" fill="none" stroke="url(#dreamGrad2)" stroke-width="2" opacity="0.5" />
+                <circle cx="160" cy="160" r="55" fill="url(#dreamGrad2)" opacity="0.9" />
+                <text x="160" y="168" text-anchor="middle" font-family="Instrument Serif, serif" font-size="26" font-style="italic" fill="#FFFCF4">dream</text>
+                <text x="160" y="240" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2.5" fill="var(--color-text-muted)">THE DREAMERS · EDUCATION</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BIG STATS BAR -->
+      <section class="tight" style="padding-top: 0">
+        <div class="container">
+          <div class="big-stats reveal">
+            <div>
+              <div class="num">82</div>
+              <div class="lbl">Beta families<br />onboarded</div>
+            </div>
+            <div>
+              <div class="num">2.3×</div>
+              <div class="lbl">More practice<br />vs. worksheets</div>
+            </div>
+            <div>
+              <div class="num">74%</div>
+              <div class="lbl">Parents reported<br />confidence lift</div>
+            </div>
+            <div>
+              <div class="num">3</div>
+              <div class="lbl">Features killed<br />with usage data</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- THE BRIEF -->
+      <section class="tight" style="background: var(--color-surface)">
+        <div class="container container--default">
+          <article class="article">
+            <h2>The brief</h2>
+            <p>
+              The Dreamers Education was a pre-launch venture aimed at students
+              underserved by mainstream EdTech — kids who don't fit the standard
+              curriculum but have outsized capacity. The founder had a name, a
+              hunch, and a small budget. What they didn't have: a brand, a
+              product, a positioning, or any clear sense of how AI fit into
+              what they were building.
+            </p>
+            <p>
+              They needed a partner who could do all four — and tell them
+              honestly which corners to cut.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- AI STACK -->
+      <section class="tight">
+        <div class="container container--default">
+          <article class="article">
+            <h2>What we actually built</h2>
+            <p>
+              Five components. We deliberately resisted the urge to over-engineer.
+              The discipline of saying "no, that's not in scope" was worth more
+              than any model choice.
+            </p>
+          </article>
+
+          <div class="stack-grid" style="margin-top: var(--space-8)">
+            <div class="stack-card reveal">
+              <div class="label">01 · Generation</div>
+              <div class="name">GPT-4.1</div>
+              <div class="desc">Adaptive practice question generation, calibrated to a 70% target success rate per student. No fine-tuning at this layer — prompts handle the work.</div>
+            </div>
+            <div class="stack-card reveal">
+              <div class="label">02 · Diagnostic</div>
+              <div class="name">Rule-based skill detection</div>
+              <div class="desc">Deterministic classifier that flags where each student is actually stuck. Cheap, auditable, and explainable to parents and teachers.</div>
+            </div>
+            <div class="stack-card reveal">
+              <div class="label">03 · Personalization</div>
+              <div class="name">Light fine-tune · 500 responses</div>
+              <div class="desc">Small fine-tune on anonymized pilot responses to bias the model toward Dreamers' tone and pedagogy. Not the model's intelligence — its manners.</div>
+            </div>
+            <div class="stack-card reveal">
+              <div class="label">04 · Grounding</div>
+              <div class="name">K–2 question bank</div>
+              <div class="desc">Curriculum-aligned math and reading question bank, hand-vetted, used as a retrieval layer to keep generations on-curriculum.</div>
+            </div>
+            <div class="stack-card reveal">
+              <div class="label">05 · Feedback</div>
+              <div class="name">Weekly parent surveys</div>
+              <div class="desc">Three-question survey emailed every Friday. The single highest-leverage signal we had — and the cheapest to operate.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===========================================
+           THE DATA — 4 CHARTS
+           =========================================== -->
+      <section class="case-data">
+        <div class="container">
+          <div class="section-header" style="max-width: 720px; margin-bottom: var(--space-12)">
+            <span class="eyebrow">Pilot results · Q1 2026</span>
+            <h2>The numbers we measured.<br /><em>And the ones we didn't dress up.</em></h2>
+            <p>
+              We ran a 10-week pilot with 82 beta families recruited through a
+              parent waitlist. These are the four charts we presented to the
+              founder at the end of the pilot — verbatim.
+            </p>
+          </div>
+
+          <div class="chart-grid-2">
+
+            <!-- CHART 1: ENGAGEMENT FUNNEL -->
+            <div class="chart-card reveal">
+              <div>
+                <div class="chart-eyebrow">01 · Engagement</div>
+                <h3 class="chart-title">From waitlist to <em>weekly habit.</em></h3>
+                <p class="chart-caption">Conversion through the pilot funnel. The two numbers we cared about: did families show up, and did they come back the second week?</p>
+              </div>
+              <svg class="chart-svg" viewBox="0 0 480 280" role="img" aria-label="Engagement funnel chart">
+                <!-- y-gridlines (every 20%) -->
+                <line class="gridline" x1="60" y1="40"  x2="460" y2="40" />
+                <line class="gridline" x1="60" y1="80"  x2="460" y2="80" />
+                <line class="gridline" x1="60" y1="120" x2="460" y2="120" />
+                <line class="gridline" x1="60" y1="160" x2="460" y2="160" />
+                <line class="gridline" x1="60" y1="200" x2="460" y2="200" />
+                <line class="baseline" x1="60" y1="240" x2="460" y2="240" />
+                <!-- y-axis labels -->
+                <text x="55" y="44"  text-anchor="end">100%</text>
+                <text x="55" y="124" text-anchor="end">60%</text>
+                <text x="55" y="204" text-anchor="end">20%</text>
+                <!-- Bars: 100, 82, 68, 55, 40 (pct of waitlist) -->
+                <!-- Bar geometry: each bar 60w, gap 20, x start 80 -->
+                <g>
+                  <rect x="80"  y="40"  width="60" height="200" fill="var(--color-primary)" opacity="0.95" />
+                  <text class="value-label" x="110" y="32" text-anchor="middle">100%</text>
+                  <text x="110" y="258" text-anchor="middle">Waitlist</text>
+                  <text x="110" y="272" text-anchor="middle" fill="var(--color-text-faint)">n=143</text>
+                </g>
+                <g>
+                  <rect x="160" y="76"  width="60" height="164" fill="var(--color-primary)" opacity="0.85" />
+                  <text class="value-label" x="190" y="68" text-anchor="middle">57%</text>
+                  <text x="190" y="258" text-anchor="middle">Onboarded</text>
+                  <text x="190" y="272" text-anchor="middle" fill="var(--color-text-faint)">n=82</text>
+                </g>
+                <g>
+                  <rect x="240" y="104" width="60" height="136" fill="var(--color-primary)" opacity="0.75" />
+                  <text class="value-label" x="270" y="96" text-anchor="middle">47%</text>
+                  <text x="270" y="258" text-anchor="middle">Wk 1 active</text>
+                  <text x="270" y="272" text-anchor="middle" fill="var(--color-text-faint)">n=68</text>
+                </g>
+                <g>
+                  <rect x="320" y="130" width="60" height="110" fill="var(--color-primary)" opacity="0.65" />
+                  <text class="value-label" x="350" y="122" text-anchor="middle">38%</text>
+                  <text x="350" y="258" text-anchor="middle">Wk 4 active</text>
+                  <text x="350" y="272" text-anchor="middle" fill="var(--color-text-faint)">n=55</text>
+                </g>
+                <g>
+                  <rect x="400" y="160" width="60" height="80"  fill="var(--color-primary)" opacity="0.55" />
+                  <text class="value-label" x="430" y="152" text-anchor="middle">28%</text>
+                  <text x="430" y="258" text-anchor="middle">Wk 10</text>
+                  <text x="430" y="272" text-anchor="middle" fill="var(--color-text-faint)">n=40</text>
+                </g>
+              </svg>
+              <p class="chart-footnote">28% week-10 retention is strong for early-stage EdTech (industry median ≈ 12–18%). Source: Dreamers internal product analytics, pilot cohort.</p>
+            </div>
+
+            <!-- CHART 2: BEHAVIOR DISPLACEMENT -->
+            <div class="chart-card reveal">
+              <div>
+                <div class="chart-eyebrow">02 · Behavior change</div>
+                <h3 class="chart-title">What we <em>actually replaced.</em></h3>
+                <p class="chart-caption">The invisible competitor wasn't another EdTech app. It was worksheets and ChatGPT. Self-reported parent behavior, week 0 vs. week 8.</p>
+              </div>
+              <svg class="chart-svg" viewBox="0 0 480 280" role="img" aria-label="Behavior displacement chart">
+                <!-- gridlines -->
+                <line class="gridline" x1="100" y1="40"  x2="460" y2="40" />
+                <line class="gridline" x1="100" y1="100" x2="460" y2="100" />
+                <line class="gridline" x1="100" y1="160" x2="460" y2="160" />
+                <line class="baseline" x1="100" y1="220" x2="460" y2="220" />
+                <text x="95" y="44"  text-anchor="end">100%</text>
+                <text x="95" y="164" text-anchor="end">40%</text>
+                <text x="95" y="224" text-anchor="end">0%</text>
+
+                <!-- 3 categories: Worksheets, ChatGPT for homework, Dreamers -->
+                <!-- Each cat has 2 bars (before / after). Cat width 100, x: 110, 230, 350 -->
+
+                <!-- Worksheets: 80% -> 35% -->
+                <g>
+                  <rect x="115" y="100" width="38" height="120" fill="var(--color-text-muted)" opacity="0.55" />
+                  <text class="value-label" x="134" y="92" text-anchor="middle">80%</text>
+                  <rect x="160" y="167" width="38" height="53" fill="var(--color-text-muted)" opacity="0.85" />
+                  <text class="value-label" x="179" y="159" text-anchor="middle">35%</text>
+                  <text x="156" y="240" text-anchor="middle">Worksheets</text>
+                </g>
+                <!-- ChatGPT: 40% -> 15% -->
+                <g>
+                  <rect x="235" y="160" width="38" height="60" fill="var(--color-text-muted)" opacity="0.55" />
+                  <text class="value-label" x="254" y="152" text-anchor="middle">40%</text>
+                  <rect x="280" y="198" width="38" height="22" fill="var(--color-text-muted)" opacity="0.85" />
+                  <text class="value-label" x="299" y="190" text-anchor="middle">15%</text>
+                  <text x="276" y="240" text-anchor="middle">ChatGPT (HW)</text>
+                </g>
+                <!-- Dreamers: 0% -> 61% -->
+                <g>
+                  <rect x="355" y="220" width="38" height="0"  fill="var(--color-primary)" opacity="0.55" />
+                  <text class="value-label" x="374" y="212" text-anchor="middle">—</text>
+                  <rect x="400" y="129" width="38" height="91" fill="var(--color-primary)" opacity="0.95" />
+                  <text class="value-label" x="419" y="121" text-anchor="middle">61%</text>
+                  <text x="396" y="240" text-anchor="middle">Dreamers</text>
+                </g>
+              </svg>
+              <div class="chart-legend">
+                <span><span class="chart-legend-dot" style="background: oklch(from var(--color-text-muted) l c h / 0.55)"></span>Week 0 (baseline)</span>
+                <span><span class="chart-legend-dot" style="background: var(--color-primary)"></span>Week 8 (post-pilot)</span>
+              </div>
+              <p class="chart-footnote">Parent-reported "primary tool used for at-home practice." Sample: 55 active families at week 8.</p>
+            </div>
+
+            <!-- CHART 3: LEARNING OUTCOMES -->
+            <div class="chart-card reveal">
+              <div>
+                <div class="chart-eyebrow">03 · Learning outcomes</div>
+                <h3 class="chart-title">Confidence, <em>before and after.</em></h3>
+                <p class="chart-caption">Parent-reported student confidence on a 1–10 scale, taken at intake and at week 8. Distribution shifted right; the long tail compressed.</p>
+              </div>
+              <svg class="chart-svg" viewBox="0 0 480 280" role="img" aria-label="Confidence distribution before and after">
+                <!-- baseline -->
+                <line class="baseline" x1="60" y1="220" x2="460" y2="220" />
+                <line class="gridline" x1="60" y1="60"  x2="460" y2="60" />
+                <line class="gridline" x1="60" y1="120" x2="460" y2="120" />
+                <line class="gridline" x1="60" y1="180" x2="460" y2="180" />
+
+                <!-- Two distribution curves drawn as paths -->
+                <!-- Before: peak around x=2-3 (low confidence), wide tail -->
+                <path d="M 60 218 Q 110 180 140 130 Q 170 80 200 110 Q 240 150 280 190 Q 320 210 360 215 Q 400 219 460 220 L 460 220 L 60 220 Z"
+                  fill="var(--color-text-muted)" opacity="0.25" />
+                <path d="M 60 218 Q 110 180 140 130 Q 170 80 200 110 Q 240 150 280 190 Q 320 210 360 215 Q 400 219 460 220"
+                  fill="none" stroke="var(--color-text-muted)" stroke-width="2" />
+
+                <!-- After: peak around x=6-7, less tail at low end -->
+                <path d="M 60 219 Q 100 218 140 215 Q 180 200 220 160 Q 260 100 300 80 Q 340 100 380 150 Q 420 200 460 220 L 460 220 L 60 220 Z"
+                  fill="var(--color-primary)" opacity="0.35" />
+                <path d="M 60 219 Q 100 218 140 215 Q 180 200 220 160 Q 260 100 300 80 Q 340 100 380 150 Q 420 200 460 220"
+                  fill="none" stroke="var(--color-primary)" stroke-width="2.5" />
+
+                <!-- Median markers -->
+                <line x1="170" y1="50" x2="170" y2="220" stroke="var(--color-text-muted)" stroke-width="1" stroke-dasharray="3 3" />
+                <text x="170" y="44" text-anchor="middle" fill="var(--color-text-muted)">median 3.2</text>
+                <line x1="295" y1="50" x2="295" y2="220" stroke="var(--color-primary)" stroke-width="1" stroke-dasharray="3 3" />
+                <text x="295" y="44" text-anchor="middle" fill="var(--color-primary)">median 6.8</text>
+
+                <!-- x-axis labels -->
+                <text x="60"  y="240" text-anchor="middle">1</text>
+                <text x="160" y="240" text-anchor="middle">3</text>
+                <text x="260" y="240" text-anchor="middle">5</text>
+                <text x="360" y="240" text-anchor="middle">7</text>
+                <text x="460" y="240" text-anchor="middle">10</text>
+                <text class="axis-label" x="260" y="262" text-anchor="middle">Confidence score (parent-reported)</text>
+              </svg>
+              <div class="chart-legend">
+                <span><span class="chart-legend-dot" style="background: oklch(from var(--color-text-muted) l c h / 0.4)"></span>Intake (week 0)</span>
+                <span><span class="chart-legend-dot" style="background: var(--color-primary)"></span>Week 8 (post-pilot)</span>
+              </div>
+              <p class="chart-footnote">74% of parents reported a 2+ point lift on the 10-point scale. Self-reported data — directional, not clinical.</p>
+            </div>
+
+            <!-- CHART 4: GAMIFIED A/B -->
+            <div class="chart-card reveal">
+              <div>
+                <div class="chart-eyebrow">04 · Trade-off</div>
+                <h3 class="chart-title">Gamified got more clicks. <em>And finished less work.</em></h3>
+                <p class="chart-caption">Two-week A/B with 40 students, split evenly. Gamified version had streaks, points, and avatar rewards. Non-gamified had none.</p>
+              </div>
+              <svg class="chart-svg" viewBox="0 0 480 280" role="img" aria-label="Gamified vs non-gamified A/B test">
+                <!-- gridlines -->
+                <line class="gridline" x1="60" y1="40"  x2="460" y2="40" />
+                <line class="gridline" x1="60" y1="100" x2="460" y2="100" />
+                <line class="gridline" x1="60" y1="160" x2="460" y2="160" />
+                <line class="baseline" x1="60" y1="220" x2="460" y2="220" />
+                <text x="55" y="44"  text-anchor="end">100%</text>
+                <text x="55" y="104" text-anchor="end">66%</text>
+                <text x="55" y="164" text-anchor="end">33%</text>
+
+                <!-- 3 metrics: Clicks per session, Lesson completion, Parent trust score -->
+                <!-- For each: 2 bars (gamified amber, non-gamified deep ink) side by side -->
+                <!-- Gamified data: clicks 92%, completion 51%, trust 48% -->
+                <!-- Non-gamified:   clicks 64%, completion 73%, trust 86% -->
+
+                <!-- METRIC 1: clicks -->
+                <g>
+                  <rect x="80"  y="55"  width="34" height="165" fill="var(--color-primary)" opacity="0.85" />
+                  <text class="value-label" x="97"  y="48"  text-anchor="middle">+44%</text>
+                  <rect x="120" y="105" width="34" height="115" fill="var(--color-text)" opacity="0.85" />
+                  <text class="value-label" x="137" y="98"  text-anchor="middle">base</text>
+                  <text x="117" y="240" text-anchor="middle">Clicks/session</text>
+                </g>
+                <!-- METRIC 2: completion -->
+                <g>
+                  <rect x="220" y="129" width="34" height="91"  fill="var(--color-primary)" opacity="0.85" />
+                  <text class="value-label" x="237" y="121" text-anchor="middle">−22%</text>
+                  <rect x="260" y="89"  width="34" height="131" fill="var(--color-text)" opacity="0.85" />
+                  <text class="value-label" x="277" y="81"  text-anchor="middle">+31%</text>
+                  <text x="257" y="240" text-anchor="middle">Lessons completed</text>
+                </g>
+                <!-- METRIC 3: trust score -->
+                <g>
+                  <rect x="360" y="135" width="34" height="85" fill="var(--color-primary)" opacity="0.85" />
+                  <text class="value-label" x="377" y="127" text-anchor="middle">−38</text>
+                  <rect x="400" y="68"  width="34" height="152" fill="var(--color-text)" opacity="0.85" />
+                  <text class="value-label" x="417" y="60"  text-anchor="middle">+12</text>
+                  <text x="397" y="240" text-anchor="middle">Parent trust (NPS)</text>
+                </g>
+              </svg>
+              <div class="chart-legend">
+                <span><span class="chart-legend-dot" style="background: var(--color-primary); opacity: 0.85"></span>Gamified version</span>
+                <span><span class="chart-legend-dot" style="background: var(--color-text); opacity: 0.85"></span>Non-gamified (shipped)</span>
+              </div>
+              <p class="chart-footnote">Result: we shipped the non-gamified version. Engagement-as-clicks was the wrong North Star. n=40, two-week test.</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT WE BUILT (narrative) -->
+      <section class="tight">
+        <div class="container container--default">
+          <article class="article">
+            <h2>The four-disciplines-in-one engagement</h2>
+
+            <h3>1. Brand identity</h3>
+            <p>
+              We built the visual system in two weeks: name lockup, logo
+              system, color (a warm, dreamy palette anchored in earned-not-given
+              rust amber and serif typography that signals seriousness without
+              feeling academic), tone-of-voice guidelines, and a launch-ready
+              brand book. The constraint was clarity — students, parents, and
+              teachers all needed to see themselves in the brand.
+            </p>
+
+            <h3>2. Product &amp; UX</h3>
+            <p>
+              Core flows designed end-to-end: onboarding, learning module
+              navigation, practice loops, and progress feedback. We made one
+              opinionated call early — no gamification gimmicks, no streaks, no
+              points — and then we proved it with the A/B test above. Trust
+              was the differentiator.
+            </p>
+
+            <h3>3. Go-to-market positioning</h3>
+            <p>
+              We positioned The Dreamers around a single contrast: most EdTech
+              optimizes for engagement, we optimize for outcomes parents
+              actually pay for. That sentence drove the homepage, the pricing
+              page, the email sequence, and every paid acquisition test. It
+              also told us which channels to ignore (social spectacle) and
+              which to invest in (parent communities, school partnerships).
+            </p>
+
+            <h3>4. AI-driven learning workflow</h3>
+            <p>
+              The heart of the engagement. Five components (above), one
+              non-negotiable: every model decision had to be explainable in
+              plain English to a parent who'd never used AI before. The
+              rule-based diagnostic layer exists because of that constraint,
+              not in spite of it.
+            </p>
+
+            <blockquote>
+              The hardest part of an engagement like this isn't the work. It's
+              the ruthless prioritization. Every week, three things ask to be
+              built. We ship one and tell the founder why we killed the other
+              two.
+            </blockquote>
+          </article>
+        </div>
+      </section>
+
+      <!-- KILLED FEATURES -->
+      <section class="tight" style="background: var(--color-surface)">
+        <div class="container container--default">
+          <article class="article">
+            <h2>What we killed</h2>
+            <p>
+              Three features made it into the prototype and didn't make it to
+              launch. All three had champions inside the team. None of them
+              survived contact with usage data.
+            </p>
+          </article>
+
+          <div class="grid grid-3" style="margin-top: var(--space-8)">
+            <div class="kill-card reveal">
+              <div class="feature">Voice-based AI tutor</div>
+              <div class="reason">Demoed beautifully. Parents loved it in pitches. But repeat usage collapsed after the first session — the latency and conversational fragility didn't survive an impatient seven-year-old.</div>
+              <div class="data">→ 8% week-2 usage · killed wk 4</div>
+            </div>
+            <div class="kill-card reveal">
+              <div class="feature">Streaks &amp; points system</div>
+              <div class="reason">Increased clicks (+44%) but reduced lesson completion (−22%) and tanked parent trust scores. Optimized for the wrong outcome. The A/B test settled the argument in two weeks.</div>
+              <div class="data">→ −22% completion · killed wk 5</div>
+            </div>
+            <div class="kill-card reveal">
+              <div class="feature">AI storytelling mode</div>
+              <div class="reason">High novelty, high first-session engagement, near-zero second-session use. Kids treated it as a toy, not a tool. Parents stopped recommending it within ten days.</div>
+              <div class="data">→ 11% repeat use · killed wk 6</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TIMELINE -->
+      <section class="tight">
+        <div class="container container--default">
+          <article class="article">
+            <h2>The honest timeline</h2>
+            <p>
+              An earlier version of this case study said "two weeks to
+              launch-ready." That was true for the brand system, not the
+              product. Here's the real arc.
+            </p>
+          </article>
+
+          <div class="timeline" style="margin-top: var(--space-8); max-width: 720px;">
+            <div class="timeline-row reveal">
+              <div class="week">Weeks 1–2 · Strategy &amp; brand</div>
+              <div class="what">Positioning, naming, brand system, prototype scaffolding.</div>
+              <div class="detail">Two weeks of intense scoping. We resisted the temptation to start building the product. The brand decisions made the product decisions easier.</div>
+            </div>
+            <div class="timeline-row reveal">
+              <div class="week">Weeks 3–6 · MVP build</div>
+              <div class="what">Core practice loop, diagnostic layer, question bank, first model integration.</div>
+              <div class="detail">Three components had champions. We shipped two and parked the third. The voice tutor went into a "later" pile that turned into a "never" pile.</div>
+            </div>
+            <div class="timeline-row reveal">
+              <div class="week">Weeks 7–10 · Closed beta</div>
+              <div class="what">82 families onboarded. Weekly parent surveys. The A/B test that killed gamification.</div>
+              <div class="detail">This is where the case study earns its numbers. Three features died in this window. The product got smaller and better every week.</div>
+            </div>
+            <div class="timeline-row reveal">
+              <div class="week">Weeks 11+ · Iteration</div>
+              <div class="what">Public launch, onboarding rewrite, school-partnership outreach.</div>
+              <div class="detail">The product that launched looked nothing like the prototype. That's the point.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LESSONS -->
+      <section class="tight" style="background: var(--color-surface)">
+        <div class="container container--default">
+          <article class="article">
+            <h2>What we'd do differently</h2>
+            <p>
+              We over-invested in the brand book in week one. The founder
+              needed less documentation and more momentum. Future end-to-end
+              engagements start with the AI workflow, not the brand
+              system — even when the client thinks they want the opposite.
+            </p>
+            <p>
+              We also waited too long to run the gamification A/B. We had a
+              hunch in week three. We ran the test in week eight. Five weeks
+              of avoidable arguing.
+            </p>
+            <p>
+              That lesson became part of the standard NS Studio engagement
+              shape. It's why every engagement now starts with the assumption
+              test, not the deliverable inventory.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- COMING SOON CASE STUDIES -->
+      <section>
+        <div class="container">
+          <div class="section-header center">
+            <span class="eyebrow">More case studies</span>
+            <h2>In progress.</h2>
+            <p style="margin-inline: auto">
+              We publish two to three case studies per year, with full context
+              and client permission. Subscribe to be notified when new work goes
+              live.
+            </p>
+          </div>
+
+          <div class="grid grid-3">
+            <article class="blog-card" style="cursor: default">
+              <div class="blog-card-image" style="background: var(--color-surface-offset)">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="color: var(--color-text-faint)" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <div class="blog-card-meta"><span class="category">Mid-market · Ops</span><span>Q3 2026</span></div>
+              <h3>Workflow audit at a 200-person SaaS company</h3>
+              <p>How we returned 4 hours per CSM per week without buying a single new tool. Coming soon.</p>
+            </article>
+            <a class="blog-card" href="./research.html" style="text-decoration: none; color: inherit; display: block;">
+              <div class="blog-card-image" style="background: var(--color-text); color: var(--color-primary); display: flex; align-items: center; justify-content: center;">
+                <svg width="72" height="72" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+                  <circle cx="40" cy="40" r="30" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+                  <circle cx="40" cy="40" r="20" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+                  <circle cx="40" cy="40" r="5" fill="currentColor"/>
+                  <line x1="40" y1="5" x2="40" y2="15" stroke="currentColor" stroke-width="1.5"/>
+                  <line x1="40" y1="65" x2="40" y2="75" stroke="currentColor" stroke-width="1.5"/>
+                  <line x1="5" y1="40" x2="15" y2="40" stroke="currentColor" stroke-width="1.5"/>
+                  <line x1="65" y1="40" x2="75" y2="40" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <div class="blog-card-meta"><span class="category" style="color: var(--color-primary)">Research · Active</span><span>Fall 2026 cohort</span></div>
+              <h3>The Calibration Program</h3>
+              <p>Two pre-registered empirical studies on what AI is doing to executive prioritization at F500 scale. Open call for partner companies and research collaborators.</p>
+              <div style="margin-top: var(--space-3); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--color-primary);">Read the program →</div>
+            </a>
+            <article class="blog-card" style="cursor: default">
+              <div class="blog-card-image" style="background: var(--color-surface-offset)">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="color: var(--color-text-faint)" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <div class="blog-card-meta"><span class="category">Public sector</span><span>Q4 2026</span></div>
+              <h3>AI governance for a regulated workforce</h3>
+              <p>Drafting an AI use policy that legal, ops, and the union could all sign. Coming soon.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="cta-block">
+            <div>
+              <h2>Could your engagement be the next case study?</h2>
+              <p>We pick three new clients per quarter. Slots fill before they're publicly listed.</p>
+              <a class="btn btn-primary btn-lg" href="./contact.html#book">Book a 30-min call</a>
+            </div>
+            <div style="text-align: center">
+              <span class="eyebrow" style="color: var(--color-primary-highlight); display: block; margin-bottom: var(--space-3)">Or first</span>
+              <a class="btn btn-secondary" href="./contact.html#discovery" style="background: transparent; border-color: oklch(from #FFFCF4 l c h / 0.4); color: #FFFCF4">Submit discovery form</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- METHODOLOGY FOOTNOTE -->
+      <section class="tight" style="padding-top: 0">
+        <div class="container container--default">
+          <p style="font-family: var(--font-mono); font-size: 11px; color: var(--color-text-faint); border-top: 1px dashed var(--color-border); padding-top: var(--space-6); letter-spacing: 0.04em; line-height: 1.7;">
+            <strong style="color: var(--color-text-muted)">METHODOLOGY ·</strong>
+            Pilot ran Q1 2026 with 82 beta families recruited from a 143-person waitlist. Engagement metrics from internal product analytics. Confidence scores and behavior change are parent-reported via weekly surveys (n=55 active families at week 8). Gamification A/B was a two-week test with 40 students randomly assigned. Numbers rounded for legibility. Figures are illustrative of pilot performance — not a forecast. Published with founder permission.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="../partials.js"></script>
+    <script src="../app.js"></script>
+  </body>
+</html>
