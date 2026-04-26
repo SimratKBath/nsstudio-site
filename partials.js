@@ -1,5 +1,13 @@
 // Renders shared header + footer on every page. Call after DOMContentLoaded.
 (function () {
+  // Auto-redirect Netlify Identity invite/recovery tokens to /admin/
+  // (Decap CMS handles the password set/reset flow there)
+  if (window.location.hash && /(invite_token|recovery_token|confirmation_token)=/.test(window.location.hash)) {
+    const adminPath = window.location.pathname.includes('/pages/') || window.location.pathname.includes('/blog/') ? '../admin/' : '/admin/';
+    window.location.replace(adminPath + window.location.hash);
+    return;
+  }
+
   const path = window.location.pathname;
   const isActive = (href) => {
     if (href === '/' || href === '/index.html') {
