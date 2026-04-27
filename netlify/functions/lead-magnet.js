@@ -16,7 +16,7 @@ const PDF_URL = 'https://nsstudiollc.com/assets/brand/nsstudio-fatal-flaws-guide
 const ALLOWED_ORIGINS = [
   'https://nsstudiollc.com',
   'https://www.nsstudiollc.com',
-  'https://nsstudio.netlify.app',
+  'https://nsstudiollc.netlify.app',
 ];
 
 function corsHeaders(origin) {
@@ -174,11 +174,14 @@ async function forwardToSheet(payload) {
 exports.handler = async (event) => {
   const origin = event.headers.origin || event.headers.Origin || '';
   const headers = corsHeaders(origin);
+  console.log('[lead-magnet] start', { method: event.httpMethod, origin });
 
   if (event.httpMethod === 'OPTIONS') {
+    console.log('[lead-magnet] preflight -> 204');
     return { statusCode: 204, headers, body: '' };
   }
   if (event.httpMethod !== 'POST') {
+    console.log('[lead-magnet] wrong method -> 405');
     return { statusCode: 405, headers, body: JSON.stringify({ error: 'Method not allowed' }) };
   }
 
@@ -186,11 +189,16 @@ exports.handler = async (event) => {
   try {
     body = JSON.parse(event.body || '{}');
   } catch {
+    console.log('[lead-magnet] invalid JSON -> 400');
     return { statusCode: 400, headers, body: JSON.stringify({ error: 'Invalid JSON' }) };
   }
+  console.log('[lead-magnet] payload keys:', Object.keys(body));
 
-  // Honeypot — bots fill hidden "company_website" field, real users don't
-  if (body.company_website && body.company_website.length > 0) {
+  // Honeypot — bots fill the hidden "website_url_extra" field, real users don't.
+  // Use a less-guessable name so password managers don't autofill it.
+  const honeypot = body.website_url_extra || body.company_website;
+  if (honeypot && String(honeypot).length > 0) {
+    console.log('[lead-magnet] honeypot tripped, value len:', String(honeypot).length);
     return { statusCode: 200, headers, body: JSON.stringify({ ok: true }) };
   }
 
@@ -219,9 +227,11 @@ exports.handler = async (event) => {
 
   // Send PDF email — must succeed
   try {
-    await sendResendEmail({ to: email, name });
+    console.log('[lead-magnet] sending Resend email to', email);
+    const resendResult = await sendResendEmail({ to: email, name });
+    console.log('[lead-magnet] Resend OK, id:', resendResult && resendResult.id);
   } catch (err) {
-    console.error('Resend send failed:', err.message);
+    console.error('[lead-magnet] Resend send failed:', err.message);
     return {
       statusCode: 502,
       headers,
@@ -231,6 +241,7 @@ exports.handler = async (event) => {
 
   // Forward to Sheet + send admin notification — best-effort, don't fail the request
   await Promise.all([forwardToSheet(leadPayload), sendNotificationEmail(leadPayload)]);
+  console.log('[lead-magnet] done -> 200');
 
   return {
     statusCode: 200,
