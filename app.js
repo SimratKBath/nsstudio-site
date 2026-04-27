@@ -67,7 +67,8 @@
     reveals.forEach((el) => el.classList.add('in'));
   }, 2500);
 
-  // Form handler — uses Formspree-style fallback; user replaces endpoint
+  // Form handler — POSTs to Netlify Function /lead-magnet which sends the
+  // PDF email via Resend and forwards the lead to a Google Sheet.
   document.querySelectorAll('form[data-form]').forEach((form) => {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -79,33 +80,29 @@
       submitBtn.disabled = true;
       const origText = submitBtn.textContent;
       submitBtn.textContent = 'Sending…';
+      if (status) {
+        status.textContent = '';
+        status.style.color = '';
+      }
+
+      const endpoint =
+        formType === 'lead-magnet'
+          ? '/.netlify/functions/lead-magnet'
+          : window.NS_STUDIO_FORM_ENDPOINT || '/.netlify/functions/lead-magnet';
 
       try {
-        // Replace this endpoint with your Formspree / Netlify Forms / serverless URL
-        // For now we simulate success and provide a mailto fallback.
-        const endpoint = window.NS_STUDIO_FORM_ENDPOINT;
-        if (endpoint) {
-          const res = await fetch(endpoint, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-            body: JSON.stringify({ formType, ...data }),
-          });
-          if (!res.ok) throw new Error('Request failed');
-        } else {
-          // Fallback: open mailto with prefilled body
-          const subject = encodeURIComponent(`NS Studio — ${formType} submission`);
-          const body = encodeURIComponent(
-            Object.entries(data)
-              .map(([k, v]) => `${k}: ${v}`)
-              .join('\n'),
-          );
-          window.location.href = `mailto:simratbath@gmail.com?subject=${subject}&body=${body}`;
-        }
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ form_type: formType, ...data }),
+        });
+        const payload = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(payload.error || 'Request failed');
 
         if (status) {
           status.textContent =
             formType === 'lead-magnet'
-              ? "✓ Thanks. Check your email for the download link."
+              ? '✓ Thanks. The PDF is on its way — check your inbox in the next minute.'
               : "✓ Got it. We'll respond within one business day.";
           status.style.color = 'var(--color-success)';
         }
@@ -113,6 +110,7 @@
       } catch (err) {
         if (status) {
           status.textContent =
+            (err && err.message) ||
             'Something went wrong. Email simratbath@gmail.com directly and we will get back to you.';
           status.style.color = 'var(--color-error)';
         }

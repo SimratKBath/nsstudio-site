@@ -2,6 +2,10 @@
 [build]
   publish   = "."
   command   = "npm install && npm run build"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
 
 # Pretty URLs: /blog/fatal-flaws → /blog/fatal-flaws.html
 [[redirects]]
