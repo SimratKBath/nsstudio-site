@@ -233,7 +233,7 @@ section.tight { padding-block: clamp(var(--space-12), 5vw, var(--space-20)); }
 .nav-links {
   display: flex;
   list-style: none;
-  gap: var(--space-8);
+  gap: var(--space-6);
   align-items: center;
 }
 .nav-links a {
@@ -242,6 +242,11 @@ section.tight { padding-block: clamp(var(--space-12), 5vw, var(--space-20)); }
   font-size: var(--text-sm);
   font-weight: 500;
   position: relative;
+  white-space: nowrap;
+}
+@media (max-width: 1080px) {
+  .nav-links { gap: var(--space-5); }
+  .nav-links a { font-size: 0.8125rem; }
 }
 .nav-links a:hover, .nav-links a.active { color: var(--color-text); }
 .nav-links a.active::after {
