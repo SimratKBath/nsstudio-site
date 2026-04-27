@@ -25,9 +25,11 @@
     { href: 'research.html', label: 'Research' },
     { href: 'about.html', label: 'About' },
     { href: 'blog.html', label: 'Articles' },
+    { href: 'brand.html', label: 'Brand' },
     { href: 'faq.html', label: 'FAQ' },
   ];
 
+  // Find prefix — pages in /pages/ subfolder need ../ prefix
   const inPages = path.includes('/pages/') || path.includes('\\pages\\');
   const inBlog = path.includes('/blog/') || path.includes('\\blog\\');
   const prefix = inPages || inBlog ? '../' : './';
@@ -102,6 +104,7 @@
               <li><a href="${prefix}pages/portfolio.html">Case studies</a></li>
               <li><a href="${prefix}pages/research.html">Research</a></li>
               <li><a href="${prefix}pages/blog.html">Articles</a></li>
+              <li><a href="${prefix}pages/brand.html">Brand</a></li>
               <li><a href="${prefix}pages/faq.html">FAQ</a></li>
               <li><a href="${prefix}admin/">Admin</a></li>
             </ul>
@@ -124,10 +127,12 @@
     </footer>
   `;
 
+  // Inject
   const headerSlot = document.getElementById('site-header');
   const footerSlot = document.getElementById('site-footer');
   if (headerSlot) headerSlot.outerHTML = headerHtml;
   if (footerSlot) footerSlot.outerHTML = footerHtml;
   const yr = document.getElementById('year');
   if (yr) yr.textContent = new Date().getFullYear();
+
 })();

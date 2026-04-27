@@ -1516,3 +1516,266 @@ html.js .reveal.in { opacity: 1; transform: translateY(0); }
   font-weight: 500;
 }
 .method-table td { color: var(--color-text); }
+
+/* ============================================
+   BRAND SYSTEM v1.0 — Apr 2026
+   Additions for the formalized brand language.
+   See brand-spec.md for the rulebook.
+   ============================================ */
+
+/* ===== Voice card =====
+   The italic amber line that frames each page.
+   Lives directly below the eyebrow on every non-home page. */
+.voice-card {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-lg);
+  color: var(--color-primary);
+  letter-spacing: -0.005em;
+  margin: var(--space-3) 0 var(--space-6);
+  line-height: 1.3;
+  max-width: 32ch;
+}
+
+/* ===== Prompt card — reusable component =====
+   The signature visual. Use anywhere we want to stamp the brand.
+   Two variants: default (cream surface) and dark (#1A1612).
+   Use --rotate on standalone cards only; not in grids. */
+.prompt-card {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-card);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--color-text);
+  max-width: 480px;
+}
+.prompt-card pre {
+  margin: 0;
+  font-family: inherit;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+.prompt-card code {
+  font-family: inherit;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+.prompt-card .tag {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+.prompt-card--dark {
+  background: #1A1612;
+  border-color: #2A2622;
+  color: #F0E8D8;
+}
+.prompt-card--dark .tag { color: var(--color-primary); }
+.prompt-card--rotate-l { transform: rotate(-1.5deg); }
+.prompt-card--rotate-r { transform: rotate(1.5deg); }
+.prompt-card--inline {
+  display: inline-block;
+  max-width: 100%;
+  margin: var(--space-2) 0;
+  font-size: 12px;
+}
+
+/* ===== Kill list — signature artifact =====
+   Dark card with strikethrough mono items. Used on services,
+   in pitch decks, in the field guide. */
+.kill-list {
+  background: #1A1612;
+  border: 1px solid #2A2622;
+  border-radius: var(--radius-lg);
+  padding: var(--space-8) var(--space-6);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.9;
+  color: #F0E8D8;
+  list-style: none;
+  margin: 0;
+  box-shadow: var(--shadow-lg);
+}
+.kill-list .kill-list-label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: var(--space-4);
+  font-weight: 500;
+}
+.kill-list-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.kill-list-items li {
+  display: flex;
+  gap: var(--space-3);
+  align-items: baseline;
+  padding: var(--space-2) 0;
+  border-bottom: 1px dashed #2A2622;
+}
+.kill-list-items li:last-child { border-bottom: none; }
+.kill-list-items .kill-mark {
+  color: var(--color-primary);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.kill-list-items .kill-text {
+  text-decoration: line-through;
+  text-decoration-color: rgba(196, 69, 16, 0.5);
+  text-decoration-thickness: 1px;
+  color: rgba(240, 232, 216, 0.75);
+}
+.kill-list-items .kill-reason {
+  display: block;
+  text-decoration: none;
+  color: rgba(240, 232, 216, 0.5);
+  font-size: 11px;
+  margin-top: 2px;
+}
+
+/* ===== <NS /> XML-tag wordmark =====
+   Secondary logo for prompt-card-heavy surfaces. */
+.ns-wordmark {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.04em;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.ns-wordmark .tag-bracket { color: var(--color-primary); }
+.ns-wordmark .tag-name { color: currentColor; }
+.ns-wordmark--lg { font-size: var(--text-xl); }
+.ns-wordmark--xl { font-size: var(--text-2xl); }
+
+/* ===== Amber dot separator =====
+   A recurring brand element used between identity strings. */
+.dot-sep {
+  color: var(--color-primary);
+  margin: 0 var(--space-2);
+  font-weight: 600;
+}
+
+/* ===== Field-guide / artifact callout =====
+   Used to reference downloadable assets. */
+.artifact-callout {
+  display: flex;
+  gap: var(--space-5);
+  align-items: flex-start;
+  padding: var(--space-6);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  border-left: 3px solid var(--color-primary);
+}
+.artifact-callout .artifact-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+  display: block;
+}
+.artifact-callout h4 {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  margin: 0 0 var(--space-2);
+}
+.artifact-callout p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+/* ===== Brand-page specific styles ===== */
+.brand-swatch {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.brand-swatch-color {
+  height: 96px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  position: relative;
+}
+.brand-swatch-meta {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+.brand-swatch-meta strong { color: var(--color-text); font-weight: 500; }
+
+.type-spec {
+  padding: var(--space-6);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+.type-spec-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: var(--space-3);
+}
+.type-spec-sample { line-height: 1.1; margin-bottom: var(--space-2); }
+.type-spec-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+/* ===== Subtle dot-grid texture overlay (optional) =====
+   Apply to dark surfaces for the "Stripe Press paper" feel. */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(240, 232, 216, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ===== Banned-word and rule callouts (for /brand page) ===== */
+.rule-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.rule-list li {
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-divider);
+  display: flex;
+  gap: var(--space-3);
+  align-items: baseline;
+}
+.rule-list li:last-child { border-bottom: none; }
+.rule-list .rule-yes { color: var(--color-success); font-weight: 600; }
+.rule-list .rule-no { color: var(--color-error); font-weight: 600; }
+
+.banned-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.banned-word {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: var(--space-1) var(--space-3);
+  background: var(--color-surface-offset);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  text-decoration: line-through;
+  text-decoration-color: var(--color-error);
+  color: var(--color-text-muted);
+}

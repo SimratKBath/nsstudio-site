@@ -22,6 +22,7 @@
         <div class="container">
           <span class="eyebrow">Contact</span>
           <h1>Three ways in. Pick the level of commitment that fits where you are.</h1>
+          <p class="voice-card">The shortest path to a conversation.</p>
           <p>
             All three reach the same person. We respond within one business
             day, every time.
@@ -47,19 +48,18 @@
               </ul>
             </div>
 
-            <div class="form-card">
-              <div style="text-align: center; padding: var(--space-8) var(--space-4)">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-primary); margin-inline: auto; margin-bottom: var(--space-4)" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                <h3 style="font-family: var(--font-display); font-size: var(--text-lg); font-weight: 400; margin-bottom: var(--space-3)">Choose a time</h3>
-                <p class="text-muted" style="font-size: var(--text-sm); margin-bottom: var(--space-6); margin-inline: auto">
-                  Click below to open the calendar. Standard Pacific Time
-                  availability — let us know if you need a different timezone.
-                </p>
-                <a href="https://calendly.com/your-link-here" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">Open the calendar</a>
-                <p class="form-help" style="margin-top: var(--space-4)">
-                  Calendly link goes here — replace <code>https://calendly.com/your-link-here</code> in <code>contact.html</code>.
-                </p>
-              </div>
+            <div class="form-card" style="padding: 0; overflow: hidden">
+              <!-- Calendly inline widget — loads the 30-min booking calendar in place -->
+              <div class="calendly-inline-widget" data-url="https://calendly.com/simratbath/30min?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=FAF6EC&text_color=1A1612&primary_color=C44510" style="min-width: 320px; height: 680px;"></div>
+              <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+              <noscript>
+                <div style="text-align: center; padding: var(--space-8) var(--space-4)">
+                  <p class="text-muted" style="font-size: var(--text-sm); margin-bottom: var(--space-6)">
+                    Pacific Time availability. JavaScript is required for the embed — or open the calendar directly.
+                  </p>
+                  <a href="https://calendly.com/simratbath/30min" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">Open the calendar</a>
+                </div>
+              </noscript>
             </div>
           </div>
         </div>
