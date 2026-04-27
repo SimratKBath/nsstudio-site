@@ -149,12 +149,26 @@ Time: ${new Date().toISOString()}
 async function forwardToSheet(payload) {
   const url = process.env.SHEET_WEBHOOK_URL;
   if (!url) return;
-  // Fire-and-forget; don't block response on this.
-  await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  }).catch(() => {});
+  // Apps Script web apps return a 302 redirect on POST; modern fetch follows
+  // redirects by default which is what we want. Use a short timeout so a slow
+  // sheet write never blocks the user response.
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      redirect: 'follow',
+      signal: controller.signal,
+    });
+    clearTimeout(timeout);
+    if (!res.ok) {
+      console.warn('Sheet webhook non-OK:', res.status, await res.text().catch(() => ''));
+    }
+  } catch (err) {
+    console.warn('Sheet webhook failed:', err.message);
+  }
 }
 
 exports.handler = async (event) => {
