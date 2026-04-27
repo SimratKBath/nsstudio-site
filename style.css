@@ -225,7 +225,10 @@ section.tight { padding-block: clamp(var(--space-12), 5vw, var(--space-20)); }
   font-weight: 400;
   letter-spacing: -0.01em;
 }
-.nav-logo svg { color: var(--color-primary); }
+.nav-logo svg { color: var(--color-text); }
+.brand-mark { height: 38px; width: auto; display: block; flex-shrink: 0; }
+.nav-logo--footer .brand-mark { height: 56px; }
+@media (max-width: 880px) { .brand-mark { height: 32px; } }
 
 .nav-links {
   display: flex;

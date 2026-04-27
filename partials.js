@@ -34,11 +34,14 @@
   const inBlog = path.includes('/blog/') || path.includes('\\blog\\');
   const prefix = inPages || inBlog ? '../' : './';
 
-  // Editorial monogram — N (currentColor, follows theme) + italic S (brand amber)
+  // Editorial monogram lockup — N (currentColor) + italic S (amber) + hairline + STUDIO
   // Glyph paths from Instrument Serif Regular/Italic at upem=1000.
-  const logoSvg = `<svg width="34" height="28" viewBox="0 0 1054 760" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="NS Studio">
+  // viewBox 1054 × 900 keeps the rule + STUDIO inside the box at every size.
+  const logoSvg = `<svg class="brand-mark" viewBox="0 0 1054 900" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="NS Studio">
     <g transform="translate(0, 720) scale(1, -1)"><path d="M429 -9Q413 -9 402 15L131 603Q128 610 123.5 609.0Q119 608 119 600V86Q119 58 128.5 43.5Q138 29 163 25L176 23Q189 22 189 11Q189 0 174 0H31Q16 0 16 11Q16 22 29 23L42 25Q68 29 78.0 43.5Q88 58 88 86V654Q88 675 81.5 682.0Q75 689 52 693L29 697Q16 700 16 709Q16 720 31 720H138Q163 720 173 698L409 179Q412 173 416.5 174.0Q421 175 421 181V634Q421 666 410.0 678.5Q399 691 382 694L364 697Q351 700 351 709Q351 720 366 720H509Q524 720 524 709Q524 698 511 697L498 695Q472 691 462.0 678.5Q452 666 452 634V23Q452 5 445.5 -2.0Q439 -9 429 -9Z" fill="currentColor"/></g>
     <g transform="translate(630, 720) scale(1, -1)"><path d="M173 -9Q145 -9 113.5 -3.0Q82 3 54.5 13.5Q27 24 11 38Q6 43 4.5 48.0Q3 53 5 63L33 220Q36 238 49 238Q61 238 61 218L62 179Q64 95 91.0 58.0Q118 21 179 21Q235 21 272.0 61.5Q309 102 309 170Q309 214 285.0 262.0Q261 310 218 358Q167 415 142.5 462.0Q118 509 118 561Q118 602 138.0 640.5Q158 679 198.5 704.5Q239 730 302 730Q389 730 435 691Q449 680 445 658L417 512Q414 497 403 497Q392 497 390 514L389 535Q385 616 366.5 658.5Q348 701 293 701Q253 701 229.0 683.0Q205 665 194.0 638.5Q183 612 183 586Q183 557 191.0 530.5Q199 504 218.5 474.5Q238 445 272 403Q320 346 347.0 294.0Q374 242 374 193Q374 134 347.5 88.5Q321 43 276.0 17.0Q231 -9 173 -9Z" fill="#C44510"/></g>
+    <line x1="0" y1="780" x2="1054" y2="780" stroke="currentColor" stroke-width="8"/>
+    <text x="0" y="860" font-family="'JetBrains Mono', ui-monospace, Menlo, monospace" font-size="70" font-weight="500" letter-spacing="14" fill="currentColor">STUDIO</text>
   </svg>`;
 
   const headerHtml = `
@@ -48,7 +51,6 @@
         <nav class="nav" aria-label="Primary">
           <a class="nav-logo" href="${prefix}index.html" aria-label="NS Studio — home">
             ${logoSvg}
-            <span>NS Studio</span>
           </a>
           <ul class="nav-links" role="list">
             ${navItems
@@ -78,9 +80,8 @@
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <a class="nav-logo" href="${prefix}index.html" style="margin-bottom: var(--space-4)">
+            <a class="nav-logo nav-logo--footer" href="${prefix}index.html" style="margin-bottom: var(--space-4)">
               ${logoSvg}
-              <span>NS Studio</span>
             </a>
             <p>An advisory studio for AI products. We tell you which products to build, which to kill, and how to ship the rest.</p>
             <div style="margin-top: var(--space-6)">
