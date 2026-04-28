@@ -85,10 +85,9 @@
         status.style.color = '';
       }
 
-      const endpoint =
-        formType === 'lead-magnet'
-          ? '/.netlify/functions/lead-magnet'
-          : window.NS_STUDIO_FORM_ENDPOINT || '/.netlify/functions/lead-magnet';
+      // Both lead-magnet AND discovery forms POST to the same Netlify Function;
+      // the function routes by form_type.
+      const endpoint = '/.netlify/functions/lead-magnet';
 
       try {
         const res = await fetch(endpoint, {
@@ -100,10 +99,12 @@
         if (!res.ok) throw new Error(payload.error || 'Request failed');
 
         if (status) {
-          status.textContent =
+          // Use the message returned by the function if present, else fall back per form type.
+          const fallback =
             formType === 'lead-magnet'
-              ? '✓ Thanks. The PDF is on its way — check your inbox in the next minute.'
-              : "✓ Got it. We'll respond within one business day.";
+              ? 'Thanks. The PDF is on its way — check your inbox in the next minute.'
+              : "Thanks. We'll respond within one business day.";
+          status.textContent = '✓ ' + (payload.message || fallback);
           status.style.color = 'var(--color-success)';
         }
         form.reset();

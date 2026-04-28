@@ -97,7 +97,10 @@
             </div>
 
             <div class="form-card">
-              <form data-form="discovery">
+              <form data-form="discovery" autocomplete="on" novalidate>
+                <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none">
+                  <label>Leave this field blank<input type="text" name="website_url_extra" tabindex="-1" autocomplete="off" /></label>
+                </div>
                 <div class="form-group">
                   <label class="form-label" for="d-name">Your name</label>
                   <input class="form-input" type="text" id="d-name" name="name" required autocomplete="name" />

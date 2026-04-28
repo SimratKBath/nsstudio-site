@@ -1,8 +1,10 @@
-// Netlify Function — handles lead magnet form submissions.
-// 1. Validates name + email
-// 2. Sends the PDF email via Resend
-// 3. Forwards the lead to a Google Sheet via Apps Script webhook (best-effort)
-// 4. Returns JSON; the static site shows a success message
+// Netlify Function — handles ALL form submissions for nsstudiollc.com.
+//
+// Routes by `form_type`:
+//   • lead-magnet  → emails the user the Fatal Flaws PDF (download link), notifies owner, logs to sheet
+//   • discovery    → emails the user a confirmation, notifies owner with full details, logs to sheet
+//
+// Always logs to the Google Sheet via Apps Script webhook (best-effort).
 //
 // Required environment variables (set in Netlify dashboard → Site settings → Environment):
 //   RESEND_API_KEY      — re_... key from resend.com/api-keys
@@ -90,7 +92,44 @@ nsstudiollc.com
 `;
 }
 
-async function sendResendEmail({ to, name }) {
+// Discovery confirmation email — sent to the lead after they submit a discovery form
+function discoveryConfirmHtml(name) {
+  const firstName = escapeHtml((name || '').split(' ')[0] || 'there');
+  return `<!doctype html>
+<html><body style="margin:0;padding:0;background:#F4EFE4;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:#1A1612">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F4EFE4;padding:40px 20px">
+  <tr><td align="center">
+    <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;background:#FAF6EC;border:1px solid #C9BC97;border-radius:4px;padding:48px 40px">
+      <tr><td>
+        <p style="margin:0 0 8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:#8B7E68;text-transform:uppercase">NS Studio</p>
+        <h1 style="margin:0 0 24px;font-family:'Instrument Serif',Georgia,serif;font-size:32px;line-height:1.2;font-weight:400;color:#1A1612">Got it, ${firstName}.</h1>
+        <p style="margin:0 0 16px;font-size:15px;line-height:1.6;color:#4D453A">Your inquiry is in. I read every one of these personally and will respond within one business day with either a calendar link or a thoughtful reason we're not the right fit.</p>
+        <p style="margin:0 0 32px;font-size:15px;line-height:1.6;color:#4D453A">If you'd rather skip the wait, my calendar is open: <a href="https://calendly.com/simratbath/30min" style="color:#C44510">calendly.com/simratbath/30min</a></p>
+        <hr style="border:none;border-top:1px solid #C9BC97;margin:32px 0"/>
+        <p style="margin:0;font-size:14px;line-height:1.6;color:#4D453A">— Simrat<br/><span style="color:#8B7E68">NS Studio</span></p>
+      </td></tr>
+    </table>
+    <p style="margin:16px 0 0;font-size:11px;color:#8B7E68;font-family:'JetBrains Mono',monospace">nsstudiollc.com</p>
+  </td></tr>
+</table>
+</body></html>`;
+}
+
+function discoveryConfirmText(name) {
+  const firstName = (name || '').split(' ')[0] || 'there';
+  return `Got it, ${firstName}.
+
+Your inquiry is in. I read every one of these personally and will respond within one business day with either a calendar link or a thoughtful reason we're not the right fit.
+
+If you'd rather skip the wait, my calendar: https://calendly.com/simratbath/30min
+
+— Simrat
+NS Studio
+nsstudiollc.com
+`;
+}
+
+async function sendResendEmail({ to, subject, html, text, campaign }) {
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.FROM_EMAIL || 'NS Studio <hello@nsstudiollc.com>';
   const replyTo = process.env.REPLY_TO_EMAIL || 'simratbath@gmail.com';
@@ -106,10 +145,10 @@ async function sendResendEmail({ to, name }) {
       from,
       to: [to],
       reply_to: replyTo,
-      subject: 'Your NS Studio guide: 5 Fatal Flaws in AI Strategy',
-      html: leadEmailHtml(name),
-      text: leadEmailText(name),
-      tags: [{ name: 'campaign', value: 'fatal-flaws-lead-magnet' }],
+      subject,
+      html,
+      text,
+      tags: campaign ? [{ name: 'campaign', value: campaign }] : undefined,
     }),
   });
 
@@ -120,21 +159,43 @@ async function sendResendEmail({ to, name }) {
   return res.json();
 }
 
-async function sendNotificationEmail({ name, email, context }) {
+async function sendNotificationEmail(payload) {
   const notify = process.env.NOTIFY_EMAIL;
   if (!notify) return; // optional
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.FROM_EMAIL || 'NS Studio <hello@nsstudiollc.com>';
   if (!apiKey) return;
 
-  const subject = `New lead: ${name || email}`;
-  const text = `New fatal-flaws lead-magnet signup:
+  const { name, email, form_type } = payload;
+  const isDiscovery = form_type === 'discovery';
 
-Name: ${name || '(not provided)'}
-Email: ${email}
-Context: ${context || '(not provided)'}
-Time: ${new Date().toISOString()}
-`;
+  const subject = isDiscovery
+    ? `New discovery inquiry: ${name || email}`
+    : `New lead: ${name || email}`;
+
+  const lines = isDiscovery
+    ? [
+        'New discovery form submission:',
+        '',
+        `Name: ${name || '(not provided)'}`,
+        `Email: ${email}`,
+        `Company & role: ${payload.company || '(not provided)'}`,
+        `Engagement: ${payload.engagement || '(not provided)'}`,
+        '',
+        'Message:',
+        payload.message || '(not provided)',
+        '',
+        `Time: ${payload.submitted_at}`,
+        `Referer: ${payload.referer || '(none)'}`,
+      ]
+    : [
+        'New fatal-flaws lead-magnet signup:',
+        '',
+        `Name: ${name || '(not provided)'}`,
+        `Email: ${email}`,
+        `Context: ${payload.context || '(not provided)'}`,
+        `Time: ${payload.submitted_at}`,
+      ];
 
   await fetch('https://api.resend.com/emails', {
     method: 'POST',
@@ -142,7 +203,7 @@ Time: ${new Date().toISOString()}
       Authorization: `Bearer ${apiKey}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ from, to: [notify], subject, text }),
+    body: JSON.stringify({ from, to: [notify], subject, text: lines.join('\n') }),
   }).catch(() => {});
 }
 
@@ -205,6 +266,9 @@ exports.handler = async (event) => {
   const name = (body.name || '').toString().trim().slice(0, 200);
   const email = (body.email || '').toString().trim().toLowerCase().slice(0, 320);
   const context = (body.context || '').toString().trim().slice(0, 200);
+  const company = (body.company || '').toString().trim().slice(0, 300);
+  const engagement = (body.engagement || '').toString().trim().slice(0, 200);
+  const message = (body.message || '').toString().trim().slice(0, 4000);
   const formType = (body.form_type || 'lead-magnet').toString().slice(0, 50);
 
   if (!name) {
@@ -214,10 +278,25 @@ exports.handler = async (event) => {
     return { statusCode: 400, headers, body: JSON.stringify({ error: 'Valid email is required' }) };
   }
 
+  // Discovery form requires company + message; lead magnet does not.
+  if (formType === 'discovery') {
+    if (!company) {
+      return { statusCode: 400, headers, body: JSON.stringify({ error: 'Company & role is required' }) };
+    }
+    if (!message) {
+      return { statusCode: 400, headers, body: JSON.stringify({ error: 'A message is required' }) };
+    }
+  }
+
   const leadPayload = {
     name,
     email,
-    context,
+    context: formType === 'discovery'
+      ? `${company}${engagement ? ' | ' + engagement : ''}${message ? ' | ' + message : ''}`.slice(0, 4000)
+      : context,
+    company,
+    engagement,
+    message,
     form_type: formType,
     submitted_at: new Date().toISOString(),
     ip: event.headers['x-forwarded-for'] || '',
@@ -225,17 +304,35 @@ exports.handler = async (event) => {
     referer: event.headers.referer || event.headers.referrer || '',
   };
 
-  // Send PDF email — must succeed
+  // Send the user-facing email — must succeed
   try {
-    console.log('[lead-magnet] sending Resend email to', email);
-    const resendResult = await sendResendEmail({ to: email, name });
+    console.log('[lead-magnet] sending Resend email', { to: email, formType });
+    let resendResult;
+    if (formType === 'discovery') {
+      resendResult = await sendResendEmail({
+        to: email,
+        subject: "NS Studio — got your inquiry",
+        html: discoveryConfirmHtml(name),
+        text: discoveryConfirmText(name),
+        campaign: 'discovery-confirmation',
+      });
+    } else {
+      // lead-magnet (default)
+      resendResult = await sendResendEmail({
+        to: email,
+        subject: 'Your NS Studio guide: 5 Fatal Flaws in AI Strategy',
+        html: leadEmailHtml(name),
+        text: leadEmailText(name),
+        campaign: 'fatal-flaws-lead-magnet',
+      });
+    }
     console.log('[lead-magnet] Resend OK, id:', resendResult && resendResult.id);
   } catch (err) {
     console.error('[lead-magnet] Resend send failed:', err.message);
     return {
       statusCode: 502,
       headers,
-      body: JSON.stringify({ error: "We couldn't send the email. Please try again or email simratbath@gmail.com directly." }),
+      body: JSON.stringify({ error: "We couldn't process that. Please try again or email simratbath@gmail.com directly." }),
     };
   }
 
@@ -248,7 +345,9 @@ exports.handler = async (event) => {
     headers,
     body: JSON.stringify({
       ok: true,
-      message: "Thanks. Check your inbox — the PDF is on its way.",
+      message: formType === 'discovery'
+        ? "Thanks. We'll respond within one business day."
+        : "Thanks. Check your inbox — the PDF is on its way.",
     }),
   };
 };
