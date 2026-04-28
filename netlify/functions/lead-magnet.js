@@ -13,7 +13,9 @@
 //   SHEET_WEBHOOK_URL   — your Apps Script /exec URL (optional but recommended)
 //   NOTIFY_EMAIL        — your inbox for new-lead notifications (optional)
 
-const PDF_URL = 'https://nsstudiollc.com/assets/brand/nsstudio-fatal-flaws-guide.pdf';
+const PDF_URL = 'https://nsstudiollc.com/assets/brand/nsstudio-kill-or-ship-guide.pdf';
+const PDF_TITLE = 'Kill or Ship';
+const PDF_SUBLINE = 'A field guide for deciding which AI pilots survive — and which to stop.';
 
 const ALLOWED_ORIGINS = [
   'https://nsstudiollc.com',
@@ -53,8 +55,8 @@ function leadEmailHtml(name) {
       <tr><td>
         <p style="margin:0 0 8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:#8B7E68;text-transform:uppercase">NS Studio</p>
         <h1 style="margin:0 0 24px;font-family:'Instrument Serif',Georgia,serif;font-size:32px;line-height:1.2;font-weight:400;color:#1A1612">Hi ${firstName} — your guide.</h1>
-        <p style="margin:0 0 16px;font-size:15px;line-height:1.6;color:#4D453A">Here's the 12-minute PDF: the five fatal flaws we see kill AI initiatives, distilled from the diagnostic framework we run in paid engagements.</p>
-        <p style="margin:0 0 32px;font-size:15px;line-height:1.6;color:#4D453A">Read it. Decide if our thinking matches yours. If it does, my calendar's at the bottom.</p>
+        <p style="margin:0 0 16px;font-size:15px;line-height:1.6;color:#4D453A">Here's <em>Kill or Ship</em>: the seven-signal rubric and decision tree we use to triage active AI pilots in client engagements. 17 pages. Four anonymized case sketches. One scoring worksheet you can run yourself this quarter.</p>
+        <p style="margin:0 0 32px;font-size:15px;line-height:1.6;color:#4D453A">Read it. If it matches how you already think about pilots, my calendar's at the bottom.</p>
         <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 32px">
           <tr><td style="background:#C44510;border-radius:2px"><a href="${PDF_URL}" style="display:inline-block;padding:14px 28px;color:#F0E8D8;text-decoration:none;font-size:15px;font-weight:500">Download the PDF →</a></td></tr>
         </table>
@@ -76,11 +78,11 @@ function leadEmailText(name) {
   const firstName = (name || '').split(' ')[0] || 'there';
   return `Hi ${firstName},
 
-Here's the 12-minute PDF: the five fatal flaws we see kill AI initiatives, distilled from the diagnostic framework we run in paid engagements.
+Here's Kill or Ship — the seven-signal rubric and decision tree we use to triage active AI pilots in client engagements. 17 pages. Four anonymized case sketches. One scoring worksheet you can run yourself this quarter.
 
 Download: ${PDF_URL}
 
-Read it. Decide if our thinking matches yours. If it does, my calendar's at the bottom.
+Read it. If it matches how you already think about pilots, my calendar's at the bottom.
 
 No drip sequence. No follow-ups. One email, one PDF, done — as promised.
 
@@ -189,7 +191,7 @@ async function sendNotificationEmail(payload) {
         `Referer: ${payload.referer || '(none)'}`,
       ]
     : [
-        'New fatal-flaws lead-magnet signup:',
+        'New Kill or Ship lead-magnet signup:',
         '',
         `Name: ${name || '(not provided)'}`,
         `Email: ${email}`,
@@ -320,10 +322,10 @@ exports.handler = async (event) => {
       // lead-magnet (default)
       resendResult = await sendResendEmail({
         to: email,
-        subject: 'Your NS Studio guide: 5 Fatal Flaws in AI Strategy',
+        subject: 'Your NS Studio field guide: Kill or Ship',
         html: leadEmailHtml(name),
         text: leadEmailText(name),
-        campaign: 'fatal-flaws-lead-magnet',
+        campaign: 'kill-or-ship-lead-magnet',
       });
     }
     console.log('[lead-magnet] Resend OK, id:', resendResult && resendResult.id);

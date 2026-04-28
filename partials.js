@@ -117,7 +117,7 @@
             <ul role="list">
               <li><a href="${prefix}pages/contact.html#book">Book a call</a></li>
               <li><a href="${prefix}pages/contact.html#discovery">Discovery form</a></li>
-              <li><a href="${prefix}pages/contact.html#fatal-flaws">Free: 5 Fatal Flaws guide</a></li>
+              <li><a href="${prefix}pages/contact.html#fatal-flaws">Free guide: Kill or Ship</a></li>
               <li><a href="mailto:simratbath@gmail.com">simratbath@gmail.com</a></li>
             </ul>
           </div>
